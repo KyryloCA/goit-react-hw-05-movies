@@ -20,7 +20,7 @@ const MovieCard = () => {
   const navigate = useNavigate();
   const [movieItem, setMovieItem] = useState(null);
 
-  const location = { ...useLocation() };
+  const location = useLocation();
   const someLocation = useRef(location.state.from);
 
   useEffect(() => {

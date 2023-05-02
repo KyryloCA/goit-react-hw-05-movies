@@ -26,7 +26,14 @@ padding-left:10px;
 export const ButtonLink = styled.button`
 display:inline-block;
 text-decoration:none;
-padding:5px;
+padding:0;
 margin:10px;
 background-color:grey;
+> a {
+    text-decoration: none;
+    display:block;
+    height:100%;
+    padding:5px;
+
+  }
 `
