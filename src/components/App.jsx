@@ -1,11 +1,14 @@
-import MoviesPage from 'Pages/MoviesPage';
-import HomePage from 'Pages/HomePage';
-import Layout from 'Pages/Layout';
+import { lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import MovieCard from './MovieCard';
-import Page404 from './Page404';
-import Cast from './Cast';
-import Reviews from './Reviews';
+
+import Layout from 'Pages/Layout';
+import HomePage from 'Pages/HomePage';
+
+const MoviesPage = lazy(() => import('Pages/MoviesPage'));
+const MovieCard = lazy(() => import('./MovieCard'));
+const Cast = lazy(() => import('./Cast'));
+const Reviews = lazy(() => import('./Reviews'));
+const Page404 = lazy(() => import('./Page404'));
 
 export const App = () => {
   return (

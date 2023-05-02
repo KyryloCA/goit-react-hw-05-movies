@@ -1,36 +1,38 @@
-import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
-import { movieReviewsFetch } from 'API'
-import ReviewCard from './ReviewCard'
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { movieReviewsFetch } from 'API';
+import ReviewCard from './ReviewCard';
 
 const Reviews = () => {
-    const[movieReview, setmovieReview] = useState()
-const {id} = useParams()
+  const [movieReview, setmovieReview] = useState();
+  const { id } = useParams();
 
-useEffect(()=>{
+  useEffect(() => {
     movieReviewsFetch(id).then(e => {
-      setmovieReview(e.results)
+      setmovieReview(e.results);
       // console.log('e', e)
-    })
-
-
-},[id])
+    });
+  }, [id]);
 
   return (
     <div>
-    {movieReview ? (
-      movieReview.length > 0 ? (
-        movieReview.map(review => (
-          <ReviewCard key={review.id} content={review.content} author={review.author} />
-        ))
+      {movieReview ? (
+        movieReview.length > 0 ? (
+          movieReview.map(review => (
+            <ReviewCard
+              key={review.id}
+              content={review.content}
+              author={review.author}
+            />
+          ))
+        ) : (
+          <p>There are no reviews.</p>
+        )
       ) : (
-        <p>There are no reviews.</p>
-      )
-    ) : (
-      <p>Loading reviews...</p>
-    )}
-  </div>
-  )
-}
+        <p>Loading reviews...</p>
+      )}
+    </div>
+  );
+};
 
-export default Reviews
+export default Reviews;

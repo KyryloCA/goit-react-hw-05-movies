@@ -17,9 +17,9 @@ const Cast = () => {
   return (
     <div>
       {movieCast &&
-        movieCast.map(actor => (
+        movieCast.map((actor, i) => (
           <ActorCard
-            key={actor.id}
+            key={Number(`${actor.id}${i}`)}
             name={actor.name}
             character={actor.character}
             profile_path={actor.profile_path}

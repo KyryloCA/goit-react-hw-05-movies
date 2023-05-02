@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useRef } from 'react';
 import {
   Link,
   Outlet,
@@ -19,8 +20,8 @@ const MovieCard = () => {
   const navigate = useNavigate();
   const [movieItem, setMovieItem] = useState(null);
 
-  const location = useLocation();
-  const backLinkHref = location.state?.from ?? '/movies';
+  const location = { ...useLocation() };
+  const someLocation = useRef(location.state.from);
 
   useEffect(() => {
     movieDetail(id).then(data => {
@@ -29,8 +30,6 @@ const MovieCard = () => {
       } else {
         setMovieItem(data);
       }
-
-      // console.log('data', data)
     });
   }, [id, navigate]);
 
@@ -40,9 +39,9 @@ const MovieCard = () => {
 
   return (
     <div>
-      {backLinkHref && (
+      {someLocation.current && (
         <ButtonLink>
-          <Link to={backLinkHref}>&lt;-Go back</Link>
+          <Link to={someLocation.current}>&lt;-Go back</Link>
         </ButtonLink>
       )}
 
@@ -64,17 +63,14 @@ const MovieCard = () => {
         <p>Additional information</p>
         <ul>
           <li>
-            <Link
-              to={{
-                pathname: 'cast',
-                state: { backLinkHref },
-              }}
-            >
+            <Link to="cast" state={{ from: location }}>
               Cast
             </Link>
           </li>
           <li>
-            <Link to="reviews">Reviews</Link>
+            <Link to="reviews" state={{ from: location }}>
+              Reviews
+            </Link>
           </li>
         </ul>
       </AdditionInfoSection>

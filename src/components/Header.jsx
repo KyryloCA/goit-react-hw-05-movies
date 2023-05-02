@@ -1,5 +1,5 @@
-import React from 'react'
-import { HeaderContainer, StyledLink } from './Header.styled'
+import React from 'react';
+import { HeaderContainer, StyledLink } from './Header.styled';
 
 const Header = () => {
   return (
@@ -7,7 +7,7 @@ const Header = () => {
       <StyledLink to="/">Home</StyledLink>
       <StyledLink to="movies">Movies</StyledLink>
     </HeaderContainer>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

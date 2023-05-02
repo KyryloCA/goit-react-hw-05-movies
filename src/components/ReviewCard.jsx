@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Container, DescriptionContainer } from './MovieCard.styled';
 
 const ReviewCard = ({ content, author }) => {
@@ -12,4 +13,8 @@ const ReviewCard = ({ content, author }) => {
   );
 };
 
+ReviewCard.propTypes = {
+  content: PropTypes.string.isRequired,
+  author: PropTypes.string.isRequired,
+};
 export default ReviewCard;
