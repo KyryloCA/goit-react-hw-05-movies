@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Suspense } from 'react';
 import { useRef } from 'react';
 import {
   Link,
@@ -74,7 +74,9 @@ const MovieCard = () => {
           </li>
         </ul>
       </AdditionInfoSection>
-      <Outlet />
+      <Suspense fallback={<div>Loading...</div>}>
+        <Outlet />
+      </Suspense>
     </div>
   );
 };
