@@ -3,7 +3,7 @@ import { useRef } from 'react';
 import {
   Link,
   Outlet,
-  useNavigate,
+  // useNavigate,
   useParams,
   useLocation,
 } from 'react-router-dom';
@@ -17,7 +17,7 @@ import {
 
 const MovieCard = () => {
   const { id } = useParams();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [movieItem, setMovieItem] = useState(null);
 
   const location = useLocation();
@@ -26,12 +26,13 @@ const MovieCard = () => {
   useEffect(() => {
     movieDetail(id).then(data => {
       if (data === '404') {
-        navigate('/404');
+        // navigate('/404');
+        console.log('no data');
       } else {
         setMovieItem(data);
       }
     });
-  }, [id, navigate]);
+  }, [id]);
 
   if (!movieItem) {
     return <div>Loading...</div>;
